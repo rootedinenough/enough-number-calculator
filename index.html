@@ -1,33 +1,48 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What's Your Enough Number?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lexend:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #faf7f2;
-      --surface:  #ffffff;
-      --surface2: #f3efe8;
-      --border:   #e8e0d5;
-      --text:     #1e1e1e;
-      --muted:    #7a8499;
-      --gold:     #a0622a;
-      --gold-dim: #c4956a;
-      --shadow:   0 4px 24px rgba(0,0,0,0.07);
+      /* core */
+      --bg:        #F3E6D5;
+      --surface:   #FFFFFF;
+      --surface2:  #FBF3E4;
+      --border:    #E5D3B4;
+      --text:      #1F2427;
+      --muted:     #5E7A78;
+
+      /* accent & semantic */
+      --marigold:  #EB9532;
+      --terracotta:#D84233;
+      --dusty-blue:#75A2A8;
+      --olive:     #3A3F21;
+      --salmon:    #E6A192;
+      --espresso:  #4D2C1D;
+
+      --radius-sm:   8px;
+      --radius-md:   14px;
+      --radius-lg:   20px;
+      --radius-pill: 999px;
+
+      --shadow: 0 4px 24px rgba(31,36,39,0.07);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
-      font-family: 'Jost', sans-serif;
+      font-family: 'Lexend', sans-serif;
       color: var(--text);
       min-height: 100vh;
       padding: 0 0 5rem;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ── Hero ── */
@@ -42,35 +57,45 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(160,98,42,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(216,66,51,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
+    .hero-logo {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+      position: relative;
+    }
+
     .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terracotta);
       margin-bottom: 1rem;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Lora', serif;
       font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.15;
       color: var(--text);
       letter-spacing: -0.01em;
       margin-bottom: 1rem;
     }
 
-    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero h1 em { font-style: italic; color: var(--terracotta); }
 
     .hero p {
       font-size: 1rem;
       color: var(--muted);
-      font-weight: 300;
+      font-weight: 400;
       max-width: 500px;
       margin: 0 auto;
       line-height: 1.7;
@@ -95,7 +120,7 @@
     .input-panel {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: var(--radius-lg);
       padding: 2rem;
       box-shadow: var(--shadow);
       position: sticky;
@@ -107,11 +132,12 @@
     }
 
     .section-label {
+      font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--terracotta);
       margin-bottom: 0.9rem;
     }
 
@@ -121,9 +147,10 @@
 
     .field label {
       display: block;
+      font-family: 'Inter', sans-serif;
       font-size: 0.74rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 0.4rem;
@@ -132,7 +159,7 @@
     .field-hint {
       font-size: 0.72rem;
       color: var(--muted);
-      font-weight: 300;
+      font-weight: 400;
       margin-top: 0.35rem;
       line-height: 1.5;
     }
@@ -155,24 +182,23 @@
       width: 100%;
       background: var(--surface2);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: var(--radius-sm);
       padding: 0.65rem 1rem 0.65rem 2rem;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Lexend', sans-serif;
       font-size: 1rem;
       font-weight: 400;
       color: var(--text);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* Lighter placeholder color */
     .input-wrap input::placeholder {
-      color: #ccc5bb;
+      color: #cbb896;
     }
 
     .input-wrap input:focus {
       outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(160,98,42,0.1);
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(216,66,51,0.1);
     }
 
     .input-suffix {
@@ -195,28 +221,30 @@
       width: 100%;
       padding: 0.85rem;
       margin-top: 0.5rem;
-      background: var(--gold);
-      color: #fff;
+      background: var(--marigold);
+      color: var(--espresso);
       border: none;
-      border-radius: 10px;
-      font-family: 'Jost', sans-serif;
+      border-radius: var(--radius-pill);
+      font-family: 'Lexend', sans-serif;
       font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       cursor: pointer;
       transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(160,98,42,0.2);
+      box-shadow: 0 4px 20px rgba(235,149,50,0.25);
     }
 
-    .calc-btn:hover { background: #b5742f; box-shadow: 0 6px 28px rgba(160,98,42,0.28); }
+    .calc-btn:hover { background: #d6842c; box-shadow: 0 6px 28px rgba(235,149,50,0.32); }
     .calc-btn:active { transform: scale(0.98); }
 
     .tax-note {
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
+      font-style: italic;
       color: var(--muted);
       text-align: center;
       margin-top: 0.75rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.5;
     }
 
@@ -230,20 +258,20 @@
     .empty-state {
       background: var(--surface);
       border: 1px dashed var(--border);
-      border-radius: 20px;
+      border-radius: var(--radius-lg);
       padding: 4rem 2rem;
       text-align: center;
       color: var(--muted);
     }
 
-    .empty-state .icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; }
-    .empty-state p { font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+    .empty-state .icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.4; color: var(--terracotta); }
+    .empty-state p { font-size: 0.9rem; line-height: 1.6; font-weight: 400; }
 
     /* ── "Enough" hero card ── */
     .enough-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: var(--radius-lg);
       padding: 2rem;
       opacity: 0;
       transform: translateY(12px);
@@ -253,15 +281,17 @@
     .enough-card.visible { opacity: 1; transform: translateY(0); }
 
     .enough-eyebrow {
+      font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
-      letter-spacing: 0.16em;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 0.4rem;
     }
 
     .enough-label {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Lora', serif;
       font-size: 1.3rem;
       font-weight: 600;
       color: var(--text);
@@ -279,31 +309,33 @@
     .enough-figure {
       background: var(--surface2);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: var(--radius-md);
       padding: 1.5rem 1.75rem;
       text-align: center;
     }
 
     .fig-label {
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 0.5rem;
     }
 
     .fig-value {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Lora', serif;
       font-size: 2.2rem;
       font-weight: 700;
-      color: var(--gold);
+      color: var(--terracotta);
       line-height: 1;
     }
 
     .fig-sub {
       font-size: 0.75rem;
       color: var(--muted);
-      font-weight: 300;
+      font-weight: 400;
       margin-top: 0.35rem;
     }
 
@@ -311,7 +343,7 @@
     .breakdown-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: var(--radius-lg);
       padding: 1.75rem 2rem;
       opacity: 0;
       transform: translateY(12px);
@@ -321,7 +353,7 @@
     .breakdown-card.visible { opacity: 1; transform: translateY(0); }
 
     .breakdown-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Lora', serif;
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text);
@@ -345,10 +377,10 @@
 
     .brow:last-child { border-bottom: none; }
 
-    .brow-label { color: var(--muted); font-weight: 300; }
-    .brow-val   { font-weight: 500; color: var(--text); }
-    .brow-val.tax { color: #a03030; }
-    .brow-val.total { color: var(--gold); font-size: 1rem; }
+    .brow-label { color: var(--muted); font-weight: 400; }
+    .brow-val   { font-weight: 600; color: var(--text); }
+    .brow-val.tax { color: var(--terracotta); }
+    .brow-val.total { color: var(--terracotta); font-size: 1rem; }
 
     .brow.total-row {
       margin-top: 0.25rem;
@@ -363,10 +395,11 @@
       max-width: 1100px;
       margin: 3rem auto 0;
       padding: 0 1.5rem;
+      font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
       font-style: italic;
-      color: #b0a898;
-      font-weight: 300;
+      color: var(--muted);
+      font-weight: 400;
       line-height: 1.6;
       text-align: center;
       border-top: 1px solid var(--border);
@@ -386,8 +419,9 @@
 <body>
 
 <div class="hero">
+  <img class="hero-logo" src="everyday_rich_stacked_logo_rgb_red.png" alt="Everyday Rich" />
   <div class="hero-eyebrow">Enough Number Calculator</div>
-  <h1>What's your 'enough' number?</h1>
+  <h1>What's your <em>'enough'</em> number?</h1>
   <p>Enter your monthly expenses and we'll calculate the household income needed to cover your current lifestyle, before and after estimated taxes.</p>
 </div>
 
@@ -450,7 +484,7 @@
     <div class="divider"></div>
 
     <button class="calc-btn" onclick="calculate()">Calculate My Enough Number →</button>
-    <div class="tax-note">Taxes estimated using 2024 US federal brackets (married filing jointly). A 5% state income tax is added as a rough national average — actual state taxes vary. No state income tax applies in AK, FL, NV, NH, SD, TN, TX, WA, and WY. This estimate does not account for child tax credits or childcare tax credits, which may reduce your tax liability.</div>
+    <div class="tax-note">Taxes estimated using 2025 US federal brackets (married filing jointly). A 5% state income tax is added as a rough national average — actual state taxes vary. No state income tax applies in AK, FL, NV, NH, SD, TN, TX, WA, and WY. This estimate does not account for child tax credits or childcare tax credits, which may reduce your tax liability.</div>
 
   </div>
 
@@ -468,17 +502,17 @@
 <p class="page-disclaimer">This calculator is for educational purposes only and does not constitute financial advice. Individual financial situations vary, and readers should consider consulting a qualified financial professional before making major financial decisions.</p>
 
 <script>
-  // ── 2024 Federal tax: married filing jointly ───────────────────────
-  const STANDARD_DEDUCTION = 29200;
+  // ── 2025 Federal tax: married filing jointly (post-OBBBA) ─────────
+  const STANDARD_DEDUCTION = 31500;
   const STATE_RATE = 0.05;
 
   const BRACKETS = [
-    { limit: 23200,    rate: 0.10 },
-    { limit: 94300,    rate: 0.12 },
-    { limit: 201050,   rate: 0.22 },
-    { limit: 383900,   rate: 0.24 },
-    { limit: 487450,   rate: 0.32 },
-    { limit: 731200,   rate: 0.35 },
+    { limit: 23850,    rate: 0.10 },
+    { limit: 96950,    rate: 0.12 },
+    { limit: 206700,   rate: 0.22 },
+    { limit: 394600,   rate: 0.24 },
+    { limit: 501050,   rate: 0.32 },
+    { limit: 751600,   rate: 0.35 },
     { limit: Infinity, rate: 0.37 },
   ];
 

@@ -473,7 +473,7 @@
 
     <div class="field">
       <label>Other Monthly Expenses</label>
-      <div class="field-hint">Include things like healthcare, retirement savings, clothing, kids' activities, subscription services, and holiday gifts</div>
+      <div class="field-hint">Include things like healthcare, retirement savings, clothing, kids' activities, subscription services, holiday gifts</div>
       <div class="input-wrap">
         <span class="input-prefix">$</span>
         <input type="number" id="expOther" placeholder="500" min="0" />
@@ -484,7 +484,7 @@
     <div class="divider"></div>
 
     <button class="calc-btn" onclick="calculate()">Calculate My Enough Number →</button>
-    <div class="tax-note">Taxes estimated using 2025 US federal brackets (married filing jointly). A 5% state income tax is added as a rough national average — actual state taxes vary. No state income tax applies in AK, FL, NV, NH, SD, TN, TX, WA, and WY. This estimate does not account for child tax credits or childcare tax credits, which may reduce your tax liability.</div>
+    <div class="tax-note">Taxes estimated using 2026 US federal brackets (married filing jointly), per IRS Revenue Procedure 2025-32. A 5% state income tax is added as a rough national average — actual state taxes vary. No state income tax applies in AK, FL, NV, NH, SD, TN, TX, WA, and WY. This estimate does not account for child tax credits or childcare tax credits, which may reduce your tax liability.</div>
 
   </div>
 
@@ -502,17 +502,17 @@
 <p class="page-disclaimer">This calculator is for educational purposes only and does not constitute financial advice. Individual financial situations vary, and readers should consider consulting a qualified financial professional before making major financial decisions.</p>
 
 <script>
-  // ── 2025 Federal tax: married filing jointly (post-OBBBA) ─────────
-  const STANDARD_DEDUCTION = 31500;
+  // ── 2026 Federal tax: married filing jointly (IRS Rev. Proc. 2025-32) ──
+  const STANDARD_DEDUCTION = 32200;
   const STATE_RATE = 0.05;
 
   const BRACKETS = [
-    { limit: 23850,    rate: 0.10 },
-    { limit: 96950,    rate: 0.12 },
-    { limit: 206700,   rate: 0.22 },
-    { limit: 394600,   rate: 0.24 },
-    { limit: 501050,   rate: 0.32 },
-    { limit: 751600,   rate: 0.35 },
+    { limit: 24800,    rate: 0.10 },
+    { limit: 100800,   rate: 0.12 },
+    { limit: 211400,   rate: 0.22 },
+    { limit: 403550,   rate: 0.24 },
+    { limit: 512450,   rate: 0.32 },
+    { limit: 768700,   rate: 0.35 },
     { limit: Infinity, rate: 0.37 },
   ];
 
